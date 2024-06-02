@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseAppHost>true</UseAppHost>
+    <SatelliteResourceLanguages>en-US</SatelliteResourceLanguages>
+    <TargetFramework>net7.0</TargetFramework>
+	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	  <DebugType>embedded</DebugType>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <LangVersion>latest</LangVersion>
+	  <Nullable>enable</Nullable>
+	  <PlatformTarget>AnyCPU</PlatformTarget>
+	  <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AvaloniaVersion>11.0.10</AvaloniaVersion>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="DialogHost.Avalonia" Version="0.7.7.0"/>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Update="Avalonia" Version="$(AvaloniaVersion)" />
+    <PackageReference Update="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+    <PackageReference Update="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+    <PackageReference Update="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+    <PackageReference Update="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+    <PackageReference Update="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+  </ItemGroup>
+</Project>

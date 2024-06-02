@@ -1,0 +1,72 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:avDDBug.ViewModels"
+        xmlns:win="using:avDDBug.Views"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="avDDBug.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="ComboBox drop down bug"
+        Width="600" Height="500"
+        CanResize="True">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<StackPanel Orientation="Vertical" Margin="20">
+		<CheckBox Content="{Binding ThemeName}" IsChecked="{Binding IsFluentTheme}"/>
+
+		<Separator Height="20"/>
+		
+		<Button Content="Switch theme" Command="{Binding ChangeCommand}"/>
+		
+		<Separator Height="20"/>
+
+		<TextBlock Text="Items list using stack panel with hardcoded widths"/>
+		<ComboBox AutoScrollToSelectedItem="True" HorizontalAlignment="Stretch" ItemsSource="{Binding List}" SelectedIndex="{Binding ItemIndex}" SelectedItem="{Binding CurItem}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate x:DataType="vm:TableDisplayInfo">
+					<Panel Background="Aqua" HorizontalAlignment="Stretch">
+						<TextBlock Text="{Binding TypeName}" HorizontalAlignment="Left"/>
+						<TextBlock Text="{Binding Description}" HorizontalAlignment="Center"/>
+						<TextBlock Text="{Binding Count}" HorizontalAlignment="Right"/>
+					</Panel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		
+		<Separator Height="20"/>
+		
+		<Panel Background="AntiqueWhite" x:DataType="vm:TableDisplayInfo" DataContext="{Binding CurItem}">
+			<TextBlock Text="{Binding TypeName}" HorizontalAlignment="Left"/>
+			<TextBlock Text="{Binding Description}" HorizontalAlignment="Center"/>
+			<TextBlock Text="{Binding Count}" HorizontalAlignment="Right"/>
+		</Panel>
+
+		<Separator Height="20"/>
+
+		<TextBlock Text="Items list grid with supposed auto-sized widths"/>
+		<ComboBox AutoScrollToSelectedItem="True" HorizontalAlignment="Stretch" ItemsSource="{Binding List}" SelectedIndex="{Binding ItemIndex}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate x:DataType="vm:TableDisplayInfo">
+					<Grid ColumnDefinitions="Auto,*,Auto" Background="Aqua">
+						<TextBlock Grid.Column="0" Text="{Binding TypeName}" Margin="0,0,10,0"/>
+						<TextBlock Grid.Column="1" Text="{Binding Description}" Margin="0,0,10,0"/>
+						<TextBlock Grid.Column="2" Text="{Binding Count}" Margin="0,0,10,0"/>
+					</Grid>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Separator Height="20"/>
+
+		<Grid ColumnDefinitions="Auto,*,*" Background="AntiqueWhite" x:DataType="vm:TableDisplayInfo" DataContext="{Binding CurItem}">
+			<TextBlock Grid.Column="0" Text="{Binding TypeName}" HorizontalAlignment="Left"/>
+			<TextBlock Grid.Column="1" Text="{Binding Description}" HorizontalAlignment="Center"/>
+			<TextBlock Grid.Column="2" Text="{Binding Count}" HorizontalAlignment="Right"/>
+		</Grid>
+	</StackPanel>
+
+</Window>
