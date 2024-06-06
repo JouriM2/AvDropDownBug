@@ -7,7 +7,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="avDDBug.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Title="ComboBox drop down bug"
+        Title="Bugs and problems"
         Width="600" Height="500"
         CanResize="True">
 
@@ -16,57 +16,19 @@
 	</Design.DataContext>
 
 	<StackPanel Orientation="Vertical" Margin="20">
-		<CheckBox Content="{Binding ThemeName}" IsChecked="{Binding IsFluentTheme}"/>
+		<CheckBox Content="{Binding SimpleStringProp}"/>
 
-		<Separator Height="20"/>
-		
-		<Button Content="Switch theme" Command="{Binding ChangeCommand}"/>
-		
-		<Separator Height="20"/>
+		<Separator Height="2" Margin="10"/>
 
-		<TextBlock Text="Items list using stack panel with hardcoded widths"/>
-		<ComboBox AutoScrollToSelectedItem="True" HorizontalAlignment="Stretch" ItemsSource="{Binding List}" SelectedIndex="{Binding ItemIndex}" SelectedItem="{Binding CurItem}">
-			<ComboBox.ItemTemplate>
-				<DataTemplate x:DataType="vm:TableDisplayInfo">
-					<Panel Background="Aqua" HorizontalAlignment="Stretch">
-						<TextBlock Text="{Binding TypeName}" HorizontalAlignment="Left"/>
-						<TextBlock Text="{Binding Description}" HorizontalAlignment="Center"/>
-						<TextBlock Text="{Binding Count}" HorizontalAlignment="Right"/>
-					</Panel>
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
-		</ComboBox>
-		
-		<Separator Height="20"/>
-		
-		<Panel Background="AntiqueWhite" x:DataType="vm:TableDisplayInfo" DataContext="{Binding CurItem}">
-			<TextBlock Text="{Binding TypeName}" HorizontalAlignment="Left"/>
-			<TextBlock Text="{Binding Description}" HorizontalAlignment="Center"/>
-			<TextBlock Text="{Binding Count}" HorizontalAlignment="Right"/>
-		</Panel>
+		<Label Content="_1 One" Target="edt1"/>
+		<TextBox x:Name="edt1"/>
 
-		<Separator Height="20"/>
+		<Label Content="_2 Two" Target="edt2"/>
+		<TextBox x:Name="edt2"/>
 
-		<TextBlock Text="Items list grid with supposed auto-sized widths"/>
-		<ComboBox AutoScrollToSelectedItem="True" HorizontalAlignment="Stretch" ItemsSource="{Binding List}" SelectedIndex="{Binding ItemIndex}">
-			<ComboBox.ItemTemplate>
-				<DataTemplate x:DataType="vm:TableDisplayInfo">
-					<Grid ColumnDefinitions="Auto,*,Auto" Background="Aqua">
-						<TextBlock Grid.Column="0" Text="{Binding TypeName}" Margin="0,0,10,0"/>
-						<TextBlock Grid.Column="1" Text="{Binding Description}" Margin="0,0,10,0"/>
-						<TextBlock Grid.Column="2" Text="{Binding Count}" Margin="0,0,10,0"/>
-					</Grid>
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
-		</ComboBox>
+		<Label Content="_A Three" Target="edt3"/>
+		<TextBox x:Name="edt3"/>
 
-		<Separator Height="20"/>
-
-		<Grid ColumnDefinitions="Auto,*,*" Background="AntiqueWhite" x:DataType="vm:TableDisplayInfo" DataContext="{Binding CurItem}">
-			<TextBlock Grid.Column="0" Text="{Binding TypeName}" HorizontalAlignment="Left"/>
-			<TextBlock Grid.Column="1" Text="{Binding Description}" HorizontalAlignment="Center"/>
-			<TextBlock Grid.Column="2" Text="{Binding Count}" HorizontalAlignment="Right"/>
-		</Grid>
 	</StackPanel>
 
 </Window>
