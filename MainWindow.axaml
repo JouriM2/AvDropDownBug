@@ -16,10 +16,6 @@
 	</Design.DataContext>
 
 	<StackPanel Orientation="Vertical" Margin="20">
-		<CheckBox Content="{Binding SimpleStringProp}"/>
-
-		<Separator Height="2" Margin="10"/>
-
 		<Label Content="_1 One" Target="edt1"/>
 		<TextBox x:Name="edt1"/>
 
